@@ -1,0 +1,43 @@
+.cart-pokemon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  margin: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 6px;
+  width: 80%;
+  height: 80px;
+}
+
+.pokemon-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.cart-pokemon-image {
+  width: 50px;
+}
+
+.pokemon-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.change-amount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15%;
+}
+
+.remove-pokemon {
+  color: red;
+  margin: 5%;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
