@@ -1,0 +1,100 @@
+{
+    "data": {
+        "water": {
+            "id": "T_001",
+            "name": "Water",
+            "colors": {
+                "body": "#FFFFFF",
+                "text": "#FFFFFF",
+                "button": {
+                    "text": "#36454F",
+                    "background": "#50C878",
+                    "cancelBackground": "#900000"
+                },
+                "link": {
+                    "text": "teal",
+                    "opacity": 1
+                },
+                "card": {
+                    "background": "#77baff"
+                },
+                "cart": {
+                    "text": "#ffab77"
+                }
+            },
+            "font": "Tinos"
+        },
+        "fire": {
+            "id": "T_007",
+            "name": "Fire",
+            "colors": {
+                "body": "#FFFFFF",
+                "text": "#FFFFFF",
+                "button": {
+                    "text": "#36454F",
+                    "background": "#50C878",
+                    "cancelBackground": "#900000"
+                },
+                "link": {
+                    "text": "#0d47a1",
+                    "opacity": 0.8
+                },
+                "card": {
+                    "background": "#fea186"
+                },
+                "cart": {
+                    "text": "#8692fe"
+                }
+            },
+            "font": "Ubuntu"
+        },
+        "grass": {
+            "id": "T_007",
+            "name": "Grass",
+            "colors": {
+                "body": "#FFFFFF",
+                "text": "#FFFFFF",
+                "button": {
+                    "text": "#36454F",
+                    "background": "#50C878",
+                     "cancelBackground": "#900000"
+                },
+                "link": {
+                    "text": "#0d47a1",
+                    "opacity": 0.8
+                },
+                "card": {
+                    "background": "#097969"
+                },
+                "cart": {
+                    "text": "#e64c59"
+                }
+            },
+            "font": "Ubuntu"
+        },
+        "electric": {
+            "id": "T_007",
+            "name": "Electric",
+            "colors": {
+                "body": "#FFFFFF",
+                "text": "#000000",
+                "button": {
+                    "text": "#36454F",
+                    "background": "#50C878",
+                    "cancelBackground": "#900000"
+                },
+                "link": {
+                    "text": "#0d47a1",
+                    "opacity": 0.8
+                },
+                "card": {
+                    "background": "#ffd800"
+                },
+                "cart": {
+                    "text": "#ffab77"
+                }
+            },
+            "font": "Ubuntu"
+        }
+    }
+}
