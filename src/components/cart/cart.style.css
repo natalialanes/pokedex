@@ -1,0 +1,111 @@
+.open-cart, .closed-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  z-index: 2;
+  position: fixed;
+  top: 70px;
+  padding-top: 20px;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  background-color: #f8f8f8;
+  box-shadow: -3px 0px 15px 1px #aaaaaa;
+  transition: ease 0.5s;
+}
+
+.open-cart {
+  transform: translateX(0px);
+}
+
+.open-cart::-webkit-scrollbar {
+  display: none;
+}
+
+.closed-cart {
+  transform: translateX(1000px);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100%;
+}
+
+.divider {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.cart-title {
+  font-weight: bold;
+  font-size: 20px;
+  width: 80%;
+  text-align: center;
+  margin: 10px;
+  color: #ff8c00;
+}
+
+.pokemon-item {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  padding: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.itens-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.current-cart-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: black;
+}
+
+.purchase {
+  height: 60px;
+  width: 60%;
+  font-size: 18px;
+}
+
+.purchase:disabled {
+  cursor: auto;
+  background: #dddddd;
+}
+
+@media screen and (max-width: 1000px) {
+  .open-cart {
+    width: 30%;
+  }
+  .cart-title{
+  font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .open-cart {
+    width: 45%;
+  }
+   button{
+     font-size: 20px;
+   }
+}
+
+@media screen and (max-width: 500px) {
+  .open-cart {
+    width: 80%;
+  }
+}
