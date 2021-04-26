@@ -2,7 +2,7 @@
 
 This project consists in a [React](https://github.com/facebook/create-react-app) application to see and buy Pokémons inside a Pokedex.
 
-You can access the application at https://pokedex-store.herokuapp.com/home/water
+You can access the application at https://pokedex-store.herokuapp.com
 
 ## About
 
