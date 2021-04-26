@@ -50,7 +50,9 @@ const HomePage = () => {
   }
 
   const searchPokemon = value => {
-    const pokemons = allPokemons.filter(pokemon => pokemon.name.includes(value))
+    const pokemons = allPokemons.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(value.toLowerCase())
+    )
     setFilteredPokemons(pokemons)
   }
 

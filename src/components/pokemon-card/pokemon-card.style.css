@@ -117,3 +117,18 @@
     }
      
   }
+
+  @media screen and (max-width: 350px) {
+    .card{
+      height:380px;
+      width: 270px;
+      }  
+    .pokemon-image{
+        margin-top: 20%;
+    }
+
+    body{
+        overflow-x: hidden;
+    }
+     
+  }
