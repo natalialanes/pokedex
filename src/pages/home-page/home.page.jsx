@@ -88,11 +88,14 @@ const HomePage = () => {
                 })}
               </div>
             </div>
-            <Pagination
-              pageNumbers={Math.ceil(filteredPokemons.length / 10)}
-              selectedNumber={selectedPage}
-              onPageSelection={pageNumber => onPageChange(pageNumber)}
-            />
+            {currentPagePokemons.length ? (
+              <Pagination
+                colors={theme.colors}
+                pageNumbers={Math.ceil(filteredPokemons.length / 10)}
+                selectedNumber={selectedPage}
+                onPageSelection={pageNumber => onPageChange(pageNumber)}
+              />
+            ) : null}
           </div>
         </ThemeProvider>
       )

@@ -1,10 +1,15 @@
 import React from 'react'
 import './pagination.style.css'
 
-const Pagination = ({ pageNumbers = 10, selectedNumber, onPageSelection }) => {
+const Pagination = ({
+  pageNumbers = 10,
+  selectedNumber,
+  onPageSelection,
+  colors
+}) => {
   const pages = [...Array(pageNumbers).keys()]
   return (
-    <div className='pagination'>
+    <div className='pagination' style={{ background: colors.card.background }}>
       <div className='page-selector'>
         {pages.map((page, key) => {
           return (

@@ -1,12 +1,15 @@
-.pagination{
+.pagination {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+     width: 100%;
+    height: 100px;
+    bottom: 0;
     left: 0;
-  
-    width: 100%;
 }
-.page-selector{
+
+.page-selector {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,19 +17,20 @@
     width: 100%;
 }
 
-
-.selected-number, .page-number{
+.selected-number, .page-number {
     margin: 10px;
     color: red;
     cursor: pointer;
 }
-.page-number{
-    color: blue;
+
+.page-number {
+    color:white;
+    font-weight: bold;
 }
 
-.current-page{
+.current-page {
     display: flex;
-    font-size: 18px;
-    color: black;
-    margin-bottom: 30px;
+    font-size: 20px;
+    color:white;
+    font-weight: bolder;
 }
