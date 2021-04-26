@@ -17,7 +17,7 @@
 }
 
 .pokemon-image {
-    width: 150px;
+    width: 180px;
     position: absolute;
     margin-top: 35%;
 }
@@ -122,6 +122,6 @@
         width: 290px;
     }
     .pokemon-image {
-        margin-top: 20%;
+        margin-top: 30%;
     }
 }
