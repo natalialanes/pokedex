@@ -59,7 +59,7 @@ const Cart = () => {
           <div>Valor total no carrinho: </div>
           R$ {currentCartValue}
         </div>
-        {cartPokemons.length && (
+        {cartPokemons.length ? (
           <button
             theme={theme}
             onClick={showPurchaseModal}
@@ -67,7 +67,7 @@ const Cart = () => {
           >
             Finalizar Compra
           </button>
-        )}
+        ) : null}
       </div>
     </div>
   )
