@@ -13,10 +13,17 @@ const CartItem = ({ pokemon }) => {
           <div className='pokemon-price'>R$ {pokemon.price}</div>
         </div>
       </div>
-      <div className='change-amount'>
-        <div onClick={() => onDecreaseAmount(pokemon)}>-</div>
+      <div className='change-amount-wrapper'>
+        <div
+          className='change-amount'
+          onClick={() => onDecreaseAmount(pokemon)}
+        >
+          -
+        </div>
         <div className='current-amount'>{pokemon.amount}</div>
-        <div onClick={() => onAddToCart(pokemon)}>+</div>
+        <div className='change-amount' onClick={() => onAddToCart(pokemon)}>
+          +
+        </div>
       </div>
       <div className='remove-pokemon' onClick={() => onRemoveItem(pokemon)}>
         x

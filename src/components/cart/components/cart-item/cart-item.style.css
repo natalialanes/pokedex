@@ -27,11 +27,15 @@
   align-items: flex-start;
 }
 
-.change-amount {
+.change-amount-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 15%;
+}
+
+.change-amount{
+  cursor: pointer;
 }
 
 .remove-pokemon {

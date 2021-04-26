@@ -45,11 +45,12 @@ const useCart = () => {
       })
     },
     onRemoveItem: selectedPokemon => {
+      const isLastItem = cartPokemons.length === 1
       const newPokemons = cartPokemons.filter(
         pokemon => pokemon.name !== selectedPokemon.name
       )
       setCartInformation({
-        isCartVisible: isCartVisible,
+        isCartVisible: isLastItem ? false : isCartVisible,
         cartPokemons: newPokemons
       })
     },
