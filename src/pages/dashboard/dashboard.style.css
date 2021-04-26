@@ -1,6 +1,6 @@
 .dash-image {
   width: 250px;
-  min-height: 300px;
+  min-height: 200px;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -46,7 +46,6 @@
 }
 
 .type {
-  margin-bottom: 100px;
   font-weight: bold;
   font-size: 40px;
 }

@@ -5,7 +5,12 @@ import { CartItem } from './components/cart-item/cart-item.component'
 
 const Cart = () => {
   const { showSuccessModal } = useModal()
-  const { cartPokemons, isCartVisible, onPurchaseFinish } = useCart()
+  const {
+    cartPokemons,
+    isCartVisible,
+    onPurchaseFinish,
+    toggleCart
+  } = useCart()
 
   const currentCartValue = cartPokemons.reduce(
     (priceAccumulator, { price, amount }) => priceAccumulator + price * amount,
@@ -38,10 +43,12 @@ const Cart = () => {
 
   return (
     <div className={isCartVisible ? 'open-cart ' : 'closed-cart'}>
+      <div className='cart-close'>
+        <span onClick={toggleCart}>x</span>
+      </div>
       <span className='cart-title' style={{ color: theme.colors.cart.text }}>
         {renderTitle()}
       </span>
-      <div className='divider'></div>
       <div className='inner'>
         {cartPokemons
           .sort((a, b) => a.addedAt - b.addedAt)

@@ -6,13 +6,25 @@
   z-index: 2;
   position: fixed;
   top: 70px;
-  padding-top: 20px;
   right: 0;
   bottom: 0;
   overflow-y: auto;
   background-color: #f8f8f8;
   box-shadow: -3px 0px 15px 1px #aaaaaa;
   transition: ease 0.5s;
+}
+
+.cart-close {
+  display: flex;
+  width: 100%;
+  font-size: 22px;
+  color: gray;
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
+.cart-close span {
+  cursor: pointer;
 }
 
 .open-cart {
@@ -35,10 +47,6 @@
   min-width: 100%;
 }
 
-.divider {
-  border-bottom: 1px solid #d8d8d8;
-}
-
 .cart-title {
   font-weight: bold;
   font-size: 20px;
@@ -46,6 +54,7 @@
   text-align: center;
   margin: 10px;
   color: #ff8c00;
+  border-bottom: 1px solid #d8d8d8;
 }
 
 .pokemon-item {
@@ -90,8 +99,8 @@
   .open-cart {
     width: 30%;
   }
-  .cart-title{
-  font-size: 20px;
+  .cart-title {
+    font-size: 20px;
   }
 }
 
@@ -99,9 +108,9 @@
   .open-cart {
     width: 45%;
   }
-   button{
-     font-size: 20px;
-   }
+  button {
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 500px) {
