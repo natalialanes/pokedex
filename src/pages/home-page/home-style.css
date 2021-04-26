@@ -28,3 +28,9 @@
   overflow-y: scroll;
   justify-content: flex-end;
 }
+
+@media screen and (max-width: 320px) {
+  .pokemons-wrapper{
+    overflow-x: hidden;
+  }
+}
