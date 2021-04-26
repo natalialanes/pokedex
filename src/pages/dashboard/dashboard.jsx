@@ -16,8 +16,8 @@ const Dashboard = () => {
 
   const pokemonTypes = [
     { electric: 'Elétrico', image: DashPikachu, alt: 'pikachu' },
-    { fire: 'Fogoso', image: DashCharmander, alt: 'charmander' },
-    { grass: 'Gramento', image: DashBulbassaur, alt: 'bulbassaur' },
+    { fire: 'Fogo', image: DashCharmander, alt: 'charmander' },
+    { grass: 'Grama', image: DashBulbassaur, alt: 'bulbassaur' },
     { water: 'Aquático', image: DashSquirtle, alt: 'squirtle' }
   ]
 
