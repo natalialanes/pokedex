@@ -6,41 +6,25 @@ const baseUrl = 'https://pokeapi.co/api/v2/'
 
 class PokemonService {
   async getAllPokemons () {
-    try {
-      const { data } = await axios.get(
-        `${baseUrl}pokemon?limit=${100}&offset=${0}`
-      )
-      return data.results
-    } catch (error) {
-      console.log(error)
-    }
+    const { data } = await axios.get(
+      `${baseUrl}pokemon?limit=${100}&offset=${0}`
+    )
+    return data.results
   }
 
   async getPokemonInformation (pokemon) {
-    try {
-      const { data } = await axios.get(pokemon.url)
-      return data
-    } catch (error) {
-      console.log(error)
-    }
+    const { data } = await axios.get(pokemon.url)
+    return data
   }
 
   async getAllPokemonTypes () {
-    try {
-      const { data } = await axios.get(`${baseUrl}type`)
-      return data
-    } catch (error) {
-      console.log(error)
-    }
+    const { data } = await axios.get(`${baseUrl}type`)
+    return data
   }
 
   async getPokemonsByType (url) {
-    try {
-      const { data } = await axios.get(url)
-      return data.pokemon
-    } catch (error) {
-      console.log(error)
-    }
+    const { data } = await axios.get(url)
+    return data.pokemon
   }
 
   async loadPagePokemons (pokemonType) {

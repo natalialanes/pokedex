@@ -69,36 +69,34 @@ const HomePage = () => {
           <GlobalStyles />
           <div className='page-container'>
             <Modal colors={theme.colors} />
-            <div>
-              <Header colors={theme.colors} onSearch={searchPokemon} />
-              <div className='cart-wrapper'>
-                <Cart
-                  pokemons={cartPokemons}
-                  color={theme.colors.card.background}
-                />
-              </div>
-              <div className='pokemons-wrapper'>
-                {noPokemonFounded ? (
-                  <div className='no-pokemon-founded'>
-                    <span>
-                      Ops! Não encontramos nenhum pokemon para sua busca
-                    </span>
-                    <img alt='pikachu' src={ShokedPikachu} />
-                  </div>
-                ) : (
-                  currentPagePokemons.map((pokemon, key) => {
-                    return (
-                      <div className='pokemon-card' key={key}>
-                        <PokemonCard
-                          colors={theme.colors}
-                          pokemon={pokemon}
-                          key={key}
-                        ></PokemonCard>
-                      </div>
-                    )
-                  })
-                )}
-              </div>
+            <Header colors={theme.colors} onSearch={searchPokemon} />
+            <div className='cart-wrapper'>
+              <Cart
+                pokemons={cartPokemons}
+                color={theme.colors.card.background}
+              />
+            </div>
+            <div className='pokemons-wrapper'>
+              {noPokemonFounded ? (
+                <div className='no-pokemon-founded'>
+                  <span>
+                    Ops! Não encontramos nenhum pokemon para sua busca
+                  </span>
+                  <img alt='pikachu' src={ShokedPikachu} />
+                </div>
+              ) : (
+                currentPagePokemons.map((pokemon, key) => {
+                  return (
+                    <div className='pokemon-card' key={key}>
+                      <PokemonCard
+                        colors={theme.colors}
+                        pokemon={pokemon}
+                        key={key}
+                      ></PokemonCard>
+                    </div>
+                  )
+                })
+              )}
             </div>
             {currentPagePokemons.length && !noPokemonFounded ? (
               <Pagination
