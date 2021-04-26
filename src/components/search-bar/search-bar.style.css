@@ -43,15 +43,15 @@
       padding: 10px;
    }
    .input-field {
-      font-size: 15px;
+      font-size: 14px;
+   }
+   .search-bar {
+      width: 60%;
+      margin-left: 5px;
    }
 }
 
-@media screen and (max-width: 320px) {
-   .search-bar {
-      width: 80%;
-      margin-left: 5px;
-   }
+@media screen and (max-width: 460px) {
    .search-icon {
       padding: 5px;
    }

@@ -1,11 +1,11 @@
 .dash-image {
-  width: 300px;
+  width: 250px;
   min-height: 300px;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .dash-image:hover {
-    width: 350px;
+    width: 300px;
   }
 }
 
@@ -51,22 +51,29 @@
   font-size: 40px;
 }
 
+
 @media screen and (max-width: 1050px) {
   .dash-image {
-    max-width: 150px;
     max-height: 80px;
+    width: 200px;
+  }
+  .dash-image:hover {
+    max-height: 80px;
+    width: 250px;
   }
 }
 
-@media screen and (max-width: 500px) {
-  .dash-image {
-    max-width: 100px;
-    max-height: 20px;
-  }
+@media screen and (max-width: 930px) {
   .pokemon-options {
     flex-direction: column;
   }
   .electric, .fire, .grass, .water {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .dash-image {
+    max-height: 20px;
   }
 }
