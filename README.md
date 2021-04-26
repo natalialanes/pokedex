@@ -2,9 +2,11 @@
 
 This project consists in a [React](https://github.com/facebook/create-react-app) application to see and buy Pokémons inside a Pokedex.
 
+You can access the application at https://pokedex-store.herokuapp.com/home/water
+
 ## About
 
-This project was built using POKÉAPI, you can read more about it in [here](https://pokeapi.co/)
+This project was built based on POKÉAPI data, you can read more about it in [here](https://pokeapi.co/)
 
 ## Setup
 
@@ -21,3 +23,8 @@ to install npm packages, and then:
 to start the app in the development mode. After that:
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+
+
+
