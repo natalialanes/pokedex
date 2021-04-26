@@ -30,3 +30,32 @@
   overflow-y: scroll;
   justify-content: flex-end;
 }
+
+.no-pokemon-founded {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.no-pokemon-founded span {
+  color: black;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+
+@media screen and (max-width: 700px) {
+  .no-pokemon-founded span{
+   text-align: center;
+  }
+  .no-pokemon-founded img{
+   height: 150px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .no-pokemon-founded img{
+   height: 100px;
+  }
+}

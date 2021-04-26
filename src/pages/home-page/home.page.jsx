@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { ThemeProvider } from 'styled-components'
+import { ShokedPikachu } from '../../assets'
 import { Cart, Header, Modal, Pagination, PokemonCard } from '../../components'
 import { useCart, usePokemon, useTheme } from '../../hooks'
 import { GlobalStyles } from '../../theme/global-styles'
@@ -17,6 +18,7 @@ const HomePage = () => {
   const { theme } = useTheme()
   const { loadPagePokemons } = usePokemon()
   const { cartPokemons } = useCart()
+  const [noPokemonFounded, setNoPokemonFounded] = useState(false)
 
   const pokemonTypes = ['electric', 'fire', 'grass', 'water']
 
@@ -53,6 +55,7 @@ const HomePage = () => {
     const pokemons = allPokemons.filter(pokemon =>
       pokemon.name.toLowerCase().includes(value.toLowerCase())
     )
+    setNoPokemonFounded(!pokemons.length)
     setFilteredPokemons(pokemons)
   }
 
@@ -75,20 +78,29 @@ const HomePage = () => {
                 />
               </div>
               <div className='pokemons-wrapper'>
-                {currentPagePokemons.map((pokemon, key) => {
-                  return (
-                    <div className='pokemon-card' key={key}>
-                      <PokemonCard
-                        colors={theme.colors}
-                        pokemon={pokemon}
-                        key={key}
-                      ></PokemonCard>
-                    </div>
-                  )
-                })}
+                {noPokemonFounded ? (
+                  <div className='no-pokemon-founded'>
+                    <span>
+                      Ops! Não encontramos nenhum pokemon para sua busca
+                    </span>
+                    <img alt='pikachu' src={ShokedPikachu} />
+                  </div>
+                ) : (
+                  currentPagePokemons.map((pokemon, key) => {
+                    return (
+                      <div className='pokemon-card' key={key}>
+                        <PokemonCard
+                          colors={theme.colors}
+                          pokemon={pokemon}
+                          key={key}
+                        ></PokemonCard>
+                      </div>
+                    )
+                  })
+                )}
               </div>
             </div>
-            {currentPagePokemons.length ? (
+            {currentPagePokemons.length && !noPokemonFounded ? (
               <Pagination
                 colors={theme.colors}
                 pageNumbers={Math.ceil(filteredPokemons.length / 10)}
