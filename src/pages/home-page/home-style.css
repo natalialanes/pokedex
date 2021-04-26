@@ -1,0 +1,30 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.pokemon-card {
+  margin: 30px;
+}
+
+.pokemons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.hide {
+  display: none;
+}
+
+.cart-wrapper {
+  display: flex;
+  width: 100%;
+  overflow-y: scroll;
+  justify-content: flex-end;
+}
