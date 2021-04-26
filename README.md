@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-# pokedex
-
-# Getting Started with Create React App
-=======
 # Pokedex Store
->>>>>>> 43195bc (updated README.md file)
 
 This project consists in a [React](https://github.com/facebook/create-react-app) application to see and buy Pokémons inside a Pokedex.
 
