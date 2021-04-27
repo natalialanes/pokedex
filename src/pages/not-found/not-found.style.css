@@ -13,16 +13,6 @@
     margin-bottom: 100px;
 }
 
-.redirect-to-home-page {
-    background-color: Transparent;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
-    font-size: 20px;
-    margin-top: 40px;
-}
-
 @media screen and (max-width: 800px) {
     .not-found img {
         width: 100px;

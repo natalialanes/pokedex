@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { ShokedPikachu } from '../../assets'
+import { GoHomeButton } from '../../components'
 import './not-found.style.css'
 
 const NotFound = () => {
@@ -8,11 +8,7 @@ const NotFound = () => {
     <div className='not-found'>
       <span className='title'>Ops! Não encontramos essa url</span>
       <img alt='pikachu' src={ShokedPikachu} />
-      <Link to='/'>
-        <button className='redirect-to-home-page'>
-          Voltar para a página inicial
-        </button>
-      </Link>
+      <GoHomeButton />
     </div>
   )
 }

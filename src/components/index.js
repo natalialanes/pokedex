@@ -1,4 +1,6 @@
 export { Cart } from './cart/cart.component'
+export { Errors } from './errors/errors.component'
+export { GoHomeButton } from './go-home-button/go-home-button.component'
 export { Header } from './header/header.component'
 export { Modal } from './modal/modal.component'
 export { Pagination } from './pagination/pagination.component'

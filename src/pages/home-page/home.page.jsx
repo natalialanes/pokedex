@@ -2,7 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { ThemeProvider } from 'styled-components'
 import { ShokedPikachu } from '../../assets'
-import { Cart, Header, Modal, Pagination, PokemonCard } from '../../components'
+import {
+  Cart,
+  Errors,
+  Header,
+  Modal,
+  Pagination,
+  PokemonCard
+} from '../../components'
 import { useCart, usePokemon, useTheme } from '../../hooks'
 import { GlobalStyles } from '../../theme/global-styles'
 import { getItemFromLocalStorage } from '../../utils/storage'
@@ -16,7 +23,7 @@ const HomePage = () => {
   const [filteredPokemons, setFilteredPokemons] = useState([])
   const [selectedPage, setSelectedPage] = useState(1)
   const { theme } = useTheme()
-  const { loadPagePokemons } = usePokemon()
+  const { errors, loadPagePokemons } = usePokemon()
   const { cartPokemons } = useCart()
   const [noPokemonFounded, setNoPokemonFounded] = useState(false)
 
@@ -27,7 +34,7 @@ const HomePage = () => {
   }, [])
 
   useEffect(() => {
-    onPageChange(0)
+    !errors.length > 0 && onPageChange(0)
   }, [filteredPokemons])
 
   const onPageChange = pageNumber => {
@@ -60,6 +67,7 @@ const HomePage = () => {
   }
 
   const render = () => {
+    if (errors.length) return <Errors />
     if (!pokemonTypes.includes(pokemonType)) {
       return <NotFound />
     }

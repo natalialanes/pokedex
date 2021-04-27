@@ -1,59 +1,87 @@
 import axios from 'axios'
-import { PokemonModel } from '../../models'
+import { PokemonModel } from '../../models/pokemon-model/pokemon.model'
 import { setItemToLocalStorage } from '../../utils/storage'
+import handleException from '../exceptions/handle-exception'
 
 const baseUrl = 'https://pokeapi.co/api/v2/'
 
 class PokemonService {
-  async getAllPokemons () {
-    const { data } = await axios.get(
-      `${baseUrl}pokemon?limit=${100}&offset=${0}`
-    )
-    return data.results
-  }
-
   async getPokemonInformation (pokemon) {
-    const { data } = await axios.get(pokemon.url)
-    return data
+    try {
+      const { data } = await axios.get(pokemon.url)
+      return data
+    } catch (error) {
+      handleException(error)
+    }
   }
 
   async getAllPokemonTypes () {
-    const { data } = await axios.get(`${baseUrl}type`)
-    return data
+    try {
+      const { data } = await axios.get(`${baseUrl}type`)
+      return data
+    } catch (error) {
+      handleException(error)
+    }
   }
 
   async getPokemonsByType (url) {
-    const { data } = await axios.get(url)
-    return data.pokemon
+    try {
+      const { data } = await axios.get(url)
+      return data.pokemon
+    } catch (error) {
+      handleException(error)
+    }
   }
 
   async loadPagePokemons (pokemonType) {
-    const typesUrls = await this.getAllPokemonTypes()
-    const currentTypeInformation = typesUrls.results.find(type => {
-      return type.name === pokemonType
-    })
+    let currentTypeInformation
+    let allCurrentTypePokemons
+    let allPokemonsInformation
 
-    const allCurrentTypePokemons = await this.getPokemonsByType(
-      currentTypeInformation.url
-    )
-    const allPokemonsInformation = await Promise.all(
-      allCurrentTypePokemons.map(async (pokemonType, key) => {
-        return await this.getPokemonInformation(pokemonType.pokemon)
+    try {
+      const typesUrls = await this.getAllPokemonTypes()
+      currentTypeInformation = typesUrls.results.find(type => {
+        return type.name === pokemonType
       })
-    )
+    } catch (error) {
+      handleException(error)
+    }
 
-    const allPokemons = allPokemonsInformation.map(pokemon => {
-      return new PokemonModel({
-        ...pokemon
-      })
-    })
-    const currrentPagePokemons = allPokemonsInformation
-      .slice(0, 10)
-      .map(pokemon => {
-        return new PokemonModel({
-          ...pokemon
+    try {
+      allCurrentTypePokemons = await this.getPokemonsByType(
+        currentTypeInformation.url
+      )
+    } catch (error) {
+      handleException(error)
+    }
+
+    try {
+      allPokemonsInformation = await Promise.all(
+        allCurrentTypePokemons.map(async (pokemonType, key) => {
+          return await this.getPokemonInformation(pokemonType.pokemon)
         })
-      })
+      )
+    } catch (error) {
+      handleException(error)
+    }
+
+    if (!allPokemonsInformation)
+      throw new Error('Erro ao carregar Pokemóns da api')
+
+    const allPokemons = allPokemonsInformation.length
+      ? allPokemonsInformation.map(pokemon => {
+          return new PokemonModel({
+            ...pokemon
+          })
+        })
+      : []
+    const currrentPagePokemons = allPokemonsInformation.length
+      ? allPokemonsInformation.slice(0, 10).map(pokemon => {
+          return new PokemonModel({
+            ...pokemon
+          })
+        })
+      : []
 
     setItemToLocalStorage('allPokemons', currrentPagePokemons)
     return allPokemons
