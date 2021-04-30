@@ -12,7 +12,6 @@ import {
 } from '../../components'
 import { useCart, usePokemon, useTheme } from '../../hooks'
 import { GlobalStyles } from '../../theme/global-styles'
-import { getItemFromLocalStorage } from '../../utils/storage'
 import { NotFound } from '../not-found/not-found'
 import './home-style.css'
 
@@ -55,7 +54,6 @@ const HomePage = () => {
     const allPokemons = await loadPagePokemons(pokemonType)
     setAllPokemons(allPokemons)
     setFilteredPokemons(allPokemons)
-    setCurrentPagePokemons(getItemFromLocalStorage('allPokemons'))
   }
 
   const searchPokemon = value => {

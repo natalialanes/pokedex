@@ -1,14 +1,13 @@
 import axios from 'axios'
-import { PokemonModel } from '../../models/pokemon-model/pokemon.model'
-import { setItemToLocalStorage } from '../../utils/storage'
+import { PokemonModel } from '../../models'
 import handleException from '../exceptions/handle-exception'
 
 const baseUrl = 'https://pokeapi.co/api/v2/'
 
 class PokemonService {
-  async getPokemonInformation (pokemon) {
+  async getPokemonInformation (pokemonUrl) {
     try {
-      const { data } = await axios.get(pokemon.url)
+      const { data } = await axios.get(pokemonUrl)
       return data
     } catch (error) {
       handleException(error)
@@ -34,57 +33,35 @@ class PokemonService {
   }
 
   async loadPagePokemons (pokemonType) {
-    let currentTypeInformation
-    let allCurrentTypePokemons
-    let allPokemonsInformation
+    let allPagePokemons
+
+    const { results: allPokemonsInformation } = await this.getAllPokemonTypes()
+
+    const allCurrentTypePokemons = await this.getPokemonsByType(
+      allPokemonsInformation.find(pokemonInformation => {
+        return pokemonInformation.name === pokemonType
+      }).url
+    )
 
     try {
-      const typesUrls = await this.getAllPokemonTypes()
-      currentTypeInformation = typesUrls.results.find(type => {
-        return type.name === pokemonType
-      })
-    } catch (error) {
-      handleException(error)
-    }
-
-    try {
-      allCurrentTypePokemons = await this.getPokemonsByType(
-        currentTypeInformation.url
-      )
-    } catch (error) {
-      handleException(error)
-    }
-
-    try {
-      allPokemonsInformation = await Promise.all(
+      allPagePokemons = await Promise.all(
         allCurrentTypePokemons.map(async (pokemonType, key) => {
-          return await this.getPokemonInformation(pokemonType.pokemon)
+          return await this.getPokemonInformation(pokemonType.pokemon.url)
         })
       )
     } catch (error) {
       handleException(error)
     }
 
-    if (!allPokemonsInformation)
-      throw new Error('Erro ao carregar Pokemóns da api')
+    if (!allPagePokemons) throw new Error('Erro ao carregar Pokemóns da api')
 
-    const allPokemons = allPokemonsInformation.length
-      ? allPokemonsInformation.map(pokemon => {
-          return new PokemonModel({
-            ...pokemon
-          })
+    return (
+      allPagePokemons.map(pokemon => {
+        return new PokemonModel({
+          ...pokemon
         })
-      : []
-    const currrentPagePokemons = allPokemonsInformation.length
-      ? allPokemonsInformation.slice(0, 10).map(pokemon => {
-          return new PokemonModel({
-            ...pokemon
-          })
-        })
-      : []
-
-    setItemToLocalStorage('allPokemons', currrentPagePokemons)
-    return allPokemons
+      }) || []
+    )
   }
 }
 
