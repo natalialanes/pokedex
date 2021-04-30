@@ -1,5 +1,7 @@
 import { EXCEPTION } from './exceptions'
 
-export default error => {
+const error = () => {
   throw new Error(error.response || EXCEPTION.API_EXCEPTION)
 }
+
+export default error

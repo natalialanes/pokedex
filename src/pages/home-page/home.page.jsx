@@ -66,55 +66,49 @@ const HomePage = () => {
 
   const render = () => {
     if (errors.length) return <Errors />
-    if (!pokemonTypes.includes(pokemonType)) {
-      return <NotFound />
-    }
-    return (
-      theme && (
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <div className='page-container'>
-            <Modal colors={theme.colors} />
-            <Header colors={theme.colors} onSearch={searchPokemon} />
-            <div className='cart-wrapper'>
-              <Cart
-                pokemons={cartPokemons}
-                color={theme.colors.card.background}
-              />
-            </div>
-            <div className='pokemons-wrapper'>
-              {noPokemonFounded ? (
-                <div className='no-pokemon-founded'>
-                  <span>
-                    Ops! Não encontramos nenhum pokemon para sua busca
-                  </span>
-                  <img alt='pikachu' src={ShokedPikachu} />
-                </div>
-              ) : (
-                currentPagePokemons.map((pokemon, key) => {
-                  return (
-                    <div className='pokemon-card' key={key}>
-                      <PokemonCard
-                        colors={theme.colors}
-                        pokemon={pokemon}
-                        key={key}
-                      ></PokemonCard>
-                    </div>
-                  )
-                })
-              )}
-            </div>
-            {currentPagePokemons.length && !noPokemonFounded ? (
-              <Pagination
-                colors={theme.colors}
-                pageNumbers={Math.ceil(filteredPokemons.length / 10)}
-                selectedNumber={selectedPage}
-                onPageSelection={pageNumber => onPageChange(pageNumber)}
-              />
-            ) : null}
+    if (!pokemonTypes.includes(pokemonType)) return <NotFound />
+    return theme && currentPagePokemons.length ? (
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <div className='page-container'>
+          <Modal colors={theme.colors} />
+          <Header colors={theme.colors} onSearch={searchPokemon} />
+          <div className='cart-wrapper'>
+            <Cart
+              pokemons={cartPokemons}
+              color={theme.colors.card.background}
+            />
           </div>
-        </ThemeProvider>
-      )
+          <div className='pokemons-wrapper'>
+            {noPokemonFounded ? (
+              <div className='no-pokemon-founded'>
+                <span>Ops! Não encontramos nenhum pokemon para sua busca</span>
+                <img alt='pikachu' src={ShokedPikachu} />
+              </div>
+            ) : (
+              currentPagePokemons.map((pokemon, key) => {
+                return (
+                  <div className='pokemon-card' key={key}>
+                    <PokemonCard
+                      colors={theme.colors}
+                      pokemon={pokemon}
+                      key={key}
+                    ></PokemonCard>
+                  </div>
+                )
+              })
+            )}
+          </div>
+          <Pagination
+            colors={theme.colors}
+            pageNumbers={Math.ceil(filteredPokemons.length / 10)}
+            selectedNumber={selectedPage}
+            onPageSelection={pageNumber => onPageChange(pageNumber)}
+          />
+        </div>
+      </ThemeProvider>
+    ) : (
+      <></>
     )
   }
   return render()
